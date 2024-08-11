@@ -26,15 +26,8 @@ class JackpotLottoTest {
     void matchTest() {
         // given
         final JackpotLotto jackpotLotto = new JackpotLotto(lotto, bonus);
-        final LottoRankCalculator lottoRankCalculator = new LottoRankCalculator() {
-            @Override
-            public Rank calculate(long matchCount, boolean matchBonus) {
-                return new Rank(1);
-            };
-        };
-
         // when
-        final Rank actual = jackpotLotto.match(lotto, lottoRankCalculator);
+        final Rank actual = jackpotLotto.match(lotto);
 
         // then
         assertThat(actual.is1st()).isTrue();

@@ -1,31 +1,34 @@
 public class Rank {
-    private final int value;
+    private final long matchCount;
 
-    public Rank(final int value) {
-        this.value = value;
+    private final boolean matchBonus;
+
+    public Rank(final long matchCount, final boolean matchBonus) {
+        this.matchCount = matchCount;
+        this.matchBonus = matchBonus;
     }
 
     public boolean is1st() {
-        return value == 1;
+        return matchCount == 6;
     }
 
     public boolean is2nd() {
-        return value == 2;
+        return matchCount == 5 && matchBonus;
     }
 
     public boolean is3rd() {
-        return value == 3;
+        return matchCount == 5 && !matchBonus;
     }
 
     public boolean is4th() {
-        return value == 4;
+        return matchCount == 4;
     }
 
-    public  boolean is5th() {
-        return value == 5;
+    public boolean is5th() {
+        return matchCount == 3;
     }
 
     public boolean isUnranked() {
-        return !(is1st() || is2nd() || is3rd() || is4th() || is5th());
+        return matchCount < 3;
     }
 }

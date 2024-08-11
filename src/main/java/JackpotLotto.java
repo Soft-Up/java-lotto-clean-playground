@@ -22,8 +22,8 @@ public class JackpotLotto {
         }
     }
 
-    public Rank match(final Lotto lotto, final LottoRankCalculator lottoRankCalculator) {
+    public Rank match(final Lotto lotto) {
         final long count = this.lotto.match(lotto);
-        return lottoRankCalculator.calculate(count, lotto.contains(bonus));
+        return new Rank(count, lotto.contains(bonus));
     }
 }
